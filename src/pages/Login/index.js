@@ -1,9 +1,20 @@
-// import React from 'react';
+import { useState } from 'react'
 import './styles.css'
 
 const Login = () => {
+    const [username, setUsername] = useState('')
+
+    const handleChange = e => {
+        setUsername(e.target.value)
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+    }
+
+
 	return (
-		<form className='mx-auto border p-2 m-2' id='login-form'>
+		<form className='mx-auto border p-2 m-2' id='login-form' onSubmit={handleSubmit}>
 			<div className='mb-3'>
 				<label htmlFor='exampleInputUser1' className='form-label'>
 					Username
@@ -13,6 +24,8 @@ const Login = () => {
 					className='form-control'
 					id='exampleInputUser1'
 					aria-describedby='userHelp'
+                    value={username}
+                    onChange={handleChange}
 				/>
 				<div id='userHelp' className='form-text'>
 					We will lie to you.
