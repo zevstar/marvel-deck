@@ -1,3 +1,25 @@
+Goal: Create an app that will display info on Marvel characters using the Marvel api.
+Potential issues:
+--the api is a beta
+--must be mindful of attribution
+
+Your public key
+338c499bfe7e07137ffb35480e17f40f
+Your private key
+8c006df61dd3fd3e0276625265db30a45a7093f0
+
+
+Your rate limit:
+ 
+3000
+calls/day Number of calls your application can make per day.
+Your authorized referrers
+List any domains that can make calls to the Marvel Comics API using your API key here:
+
+developer.marvel.com
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
