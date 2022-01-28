@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import './styles.css'
 
-const Login = () => {
+const Login = ({ setUser }) => {
     const [username, setUsername] = useState('')
 
     const handleChange = e => {
@@ -10,6 +10,7 @@ const Login = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
+        setUser(username)
     }
 
 

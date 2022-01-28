@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Routes, Route } from 'react-router-dom'
 // css
 import './App.css';
@@ -13,13 +13,16 @@ import Nav from './components/Nav';
 function App() {
 	// const user = useContext(UserContext)
 	// console.log(user)
+
+const [user, setUser] = useState('')
+
 	return (
 		<div className='App'>
-			<UserContext.Provider value={'filler'}>
+			<UserContext.Provider value={user}>
 				<Nav />
 
 				<Routes>
-          <Route path='login' element={<Login />} />
+          <Route path='login' element={<Login setUser={setUser} />} />
           {/* <Route path='home' element ={<Home />} /> */}
         </Routes>
 			</UserContext.Provider>
