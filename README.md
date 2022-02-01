@@ -3,6 +3,11 @@ Potential issues:
 --the api is a beta
 --must be mindful of attribution
 
+created MD5 hash
+
+
+https://gateway.marvel.com:443/v1/public/characters?ts=1&apikey=338c499bfe7e07137ffb35480e17f40f&hash=092e64fa15d51070c8f625a052723958
+
 Your public key
 338c499bfe7e07137ffb35480e17f40f
 Your private key

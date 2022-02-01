@@ -1,3 +1,5 @@
+// https://gateway.marvel.com/v1/public/characters?ts=1&apikey=338c499bfe7e07137ffb35480e17f40f&hash=092e64fa15d51070c8f625a052723958
+
 import { useState, useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -16,33 +18,34 @@ const App = () => {
 	// const user = useContext(UserContext)
 	// console.log(user)
 
-const [user, setUser] = useState('')
+// const [user, setUser] = useState('')
 
-const fetchMarvel = async () => {
-  try {
-    const response = await axios.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=spider&apikey=338c499bfe7e07137ffb35480e17f40f')
+// const fetchMarvel = async () => {
+//   try {
+//     const response = await axios.get('https://gateway.marvel.com/v1/public/characters?nameStartsWith=spider&apikey=338c499bfe7e07137ffb35480e17f40f')
 
-    console.log(response)
+//     console.log(response)
 
-  } catch(error) {
-    console.log(error)
-  }
+//   } catch(error) {
+//     console.log(error)
+//   }
 
-}
+// }
 
-useEffect()
+// useEffect()
 
 	return (
 		<div className='App'>
-			<UserContext.Provider value={user}>
+			{/* <UserContext.Provider value={user}> */}
 				<Nav />
+				<MarvelList />
 
 				<Routes>
-          <Route path='login' element={<Login setUser={setUser} />} />
+          {/* <Route path='login' element={<Login setUser={setUser} />} /> */}
           <Route path='/' element ={<Home />} />
           <Route path='marvel/list' element={<MarvelList />} />
         </Routes>
-			</UserContext.Provider>
+			{/* </UserContext.Provider> */}
 
 			{/* <Login /> */}
 		</div>
