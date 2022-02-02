@@ -1,10 +1,34 @@
-import { useContext } from 'react';
+// https://gateway.marvel.com:443/v1/public/characters?name=Thor&apikey=338c499bfe7e07137ffb35480e17f40f
+
+import axios from 'axios';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 
+
+
 const Nav = () => {
+	const [userInput, setUserInput] = useState('')
+
 	const user = useContext(UserContext);
 	console.log(user);
+
+
+	const fetchMarvel = async () => {
+	
+		try {
+		//   const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
+		const response = await axios.get(`https://gateway.marvel.com:443/v1/public/characters?name=${userInput}&apikey=338c499bfe7e07137ffb35480e17f40f`)
+		//   setCharacters(response.data.data.results)
+		  console.log(response)
+	  
+		} catch(error) {
+		  console.log(error)
+		}
+	  
+	  }
+
+
 	return (
 		<nav className='navbar navbar-expand-lg navbar-light bg-light'>
 			<div className='container-fluid'>
@@ -79,14 +103,24 @@ const Nav = () => {
 							</ul>
 						</li>
 					</ul>
-					<form className='d-flex'>
+					<form className='d-flex' >
 						<input
 							className='form-control me-2'
 							type='search'
 							placeholder='Search'
 							aria-label='Search'
-						></input>
-						<button className='btn btn-outline-success' type='submit'>
+							onChange={(e) => {
+								return setUserInput(e.target.value)
+							}}
+							value={ userInput }
+						/>
+						<button className='btn btn-outline-success' type='submit'
+						 onClick={(e) => {
+							 e.preventDefault()
+							
+							 console.log(userInput)
+							 return fetchMarvel()
+						 }}>
 							Search
 						</button>
 					</form>

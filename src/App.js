@@ -1,5 +1,7 @@
 // https://gateway.marvel.com/v1/public/characters?ts=1&apikey=338c499bfe7e07137ffb35480e17f40f&hash=092e64fa15d51070c8f625a052723958
 
+
+
 import { useState, useContext, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -26,30 +28,39 @@ const [characters, setCharacters] = useState([])
 
 
 
-const fetchMarvel = async () => {
-	
-  
+// const fetchMarvel = async () => {
 
+//   try {
+//     const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
+// 	setCharacters(response.data.data.results)
+//     console.log(response.data.data.results)
 
-  try {
-    const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
+//   } catch(error) {
+//     console.log(error)
+//   }
 
-    console.log(response)
-
-  } catch(error) {
-    console.log(error)
-  }
-
-}
+// }
 
 useEffect(() =>{
-	try{
-		fetchMarvel()
-	} catch(error) {
-		console.log(error)
-	}
+	// try{
+	// 	fetchMarvel()
+	// } catch(error) {
+	// 	console.log(error)
+	// }
+	const fetchMarvel = async () => {
 	
-})
+		  try {
+		    const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
+			setCharacters(response.data.data.results)
+		    console.log(response.data.data.results)
+		
+		  } catch(error) {
+		    console.log(error)
+		  }
+		
+		}
+		fetchMarvel()
+}, [])
 
 	return (
 		<div className='App'>
