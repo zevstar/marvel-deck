@@ -21,6 +21,7 @@ const App = () => {
 	// console.log(user)
 
 const [user, setUser] = useState('')
+const [marvelList, setMarvelList] = useState([])
 
 const [characters, setCharacters] = useState([])
 	const apiKey = '338c499bfe7e07137ffb35480e17f40f'
@@ -52,7 +53,8 @@ useEffect(() =>{
 		  try {
 		    const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
 			setCharacters(response.data.data.results)
-		    console.log(response.data.data.results)
+
+		    setMarvelList(response.data.data.results)
 		
 		  } catch(error) {
 		    console.log(error)
@@ -62,16 +64,18 @@ useEffect(() =>{
 		fetchMarvel()
 }, [])
 
+	console.log('marvelList', marvelList)
+
 	return (
 		<div className='App'>
 			{/* <UserContext.Provider value={user}> */}
 				<Nav />
 				{/* <MarvelList /> */}
 
-				<Routes>
+		<Routes>
           <Route path='login' element={<Login setUser={setUser} />} />
           <Route path='/' element ={<Home />} />
-          <Route path='marvel/list' element={<MarvelList />} />
+          <Route path='marvel/list' element={<MarvelList marvelList={marvelList} />} />
         </Routes>
 			{/* </UserContext.Provider> */}
 
