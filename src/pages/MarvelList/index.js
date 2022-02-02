@@ -6,14 +6,12 @@ import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 
 const MarvelList = ({ marvelList, itemsPerPage }) => {
-   
-
- // We start with an empty list of marvelList.
- const [currentItems, setCurrentItems] = useState(null);
- const [pageCount, setPageCount] = useState(0);
- // Here we use item offsets; we could also use page offsets
- // following the API or data you're working with.
- const [itemOffset, setItemOffset] = useState(0);
+	// We start with an empty list of marvelList.
+	const [currentItems, setCurrentItems] = useState(null);
+	const [pageCount, setPageCount] = useState(0);
+	// Here we use item offsets; we could also use page offsets
+	// following the API or data you're working with.
+	const [itemOffset, setItemOffset] = useState(0);
 
 	console.log('props', marvelList);
 	//   const [characters, setCharacters] = useState([])
@@ -26,29 +24,29 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 	//     .catch(err => console.log(err))
 	//   }
 
-	  useEffect(() => {
+	useEffect(() => {
+		// Fetch marvelList from another resources.
+		const endOffset = itemOffset + itemsPerPage;
+		console.log(`Loading marvelList from ${itemOffset} to ${endOffset}`);
+		setCurrentItems(marvelList.slice(itemOffset, endOffset));
+		setPageCount(Math.ceil(marvelList.length / itemsPerPage));
+	}, [itemOffset, itemsPerPage]);
 
-      // Fetch marvelList from another resources.
-    const endOffset = itemOffset + itemsPerPage;
-    console.log(`Loading marvelList from ${itemOffset} to ${endOffset}`);
-    setCurrentItems(marvelList.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(marvelList.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
-
-  const Items = ({ currentItems }) => {
-    return (
-      <>
-        {currentItems &&
-          currentItems.map((item) => (
-            <div>
-              <h3>Item #{item}</h3>
-            </div>
-          ))}
-      </>
-    );
-  }
-
-
+	const Marvel = () => {
+		return (
+			<>
+				{
+        marvelList &&
+					marvelList.map((marvel) => (
+						<div>
+							<h3>{marvel.name}</h3>
+						</div>
+					)
+          )
+        }
+			</>
+		);
+	};
 
 	//     try{
 	//       getCharacters()
@@ -73,15 +71,26 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
             marvelList.map(marvelList => <li>{marvelList.name}</li>)
           } */}
 
-			<Items currentItems={currentItems} />
+			<Marvel />
 			<ReactPaginate
-				breakLabel='...'
-				nextLabel='next >'
-				onPageChange={handlePageClick}
-				pageRangeDisplayed={5}
-				pageCount={pageCount}
-				previousLabel='< previous'
-				renderOnZeroPageCount={null}
+				nextLabel="next >"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={2}
+        pageCount={pageCount}
+        previousLabel="< previous"
+        pageClassName="page-item"
+        pageLinkClassName="page-link"
+        previousClassName="page-item"
+        previousLinkClassName="page-link"
+        nextClassName="page-item"
+        nextLinkClassName="page-link"
+        breakLabel="..."
+        breakClassName="page-item"
+        breakLinkClassName="page-link"
+        containerClassName="pagination"
+        activeClassName="active"
+        renderOnZeroPageCount={null}
 			/>
 		</div>
 	);
