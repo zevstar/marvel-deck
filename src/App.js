@@ -75,7 +75,7 @@ useEffect(() =>{
 		<Routes>
           <Route path='login' element={<Login setUser={setUser} />} />
           <Route path='/' element ={<Home />} />
-          <Route path='marvel/list' element={<MarvelList marvelList={marvelList} />} />
+          <Route path='marvel/list' element={<MarvelList marvelList={marvelList} itemsPerPage={4} />} />
         </Routes>
 			{/* </UserContext.Provider> */}
 
