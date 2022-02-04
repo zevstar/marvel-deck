@@ -1,0 +1,10 @@
+.card {
+   width: 30rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+
+.card-body {
+    width: 300px;
+}

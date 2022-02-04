@@ -7,11 +7,13 @@ import UserContext from '../../contexts/UserContext';
 
 
 
+
+
 const Nav = () => {
 	const [userInput, setUserInput] = useState('')
 
 	const user = useContext(UserContext);
-	console.log(user);
+	console.log('Nav', user);
 
 
 	const fetchMarvel = async () => {
@@ -118,7 +120,7 @@ const Nav = () => {
 						 onClick={(e) => {
 							 e.preventDefault()
 							
-							 console.log(userInput)
+							 console.log('Nav', userInput)
 							 return fetchMarvel()
 						 }}>
 							Search
