@@ -51,7 +51,7 @@ useEffect(() =>{
 	const fetchMarvel = async () => {
 	
 		  try {
-		    const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}`)
+		    const response = await axios.get(`https://gateway.marvel.com/v1/public/characters?orderBy=modified&limit=100&offset=200ts=1&apikey=${apiKey}&hash=${hash}`)
 			setCharacters(response.data.data.results)
 
 		    setMarvelList(response.data.data.results)

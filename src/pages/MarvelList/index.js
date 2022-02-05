@@ -5,7 +5,9 @@ import { useState, useEffect } from 'react';
 import ReactPaginate from 'react-paginate';
 import axios from 'axios';
 
-import './styles.css'
+import './styles.css';
+
+const imgURL = `http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73`;
 
 const MarvelList = ({ marvelList, itemsPerPage }) => {
 	// We start with an empty list of marvelList.
@@ -93,35 +95,36 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 				{marvelList &&
 					marvelList.map((marvel) => (
 						<div>
-							<h3>{marvel.name}</h3>
-							<h3>{marvel.description}</h3>
+							<div>
+								<div className='card'>
+									<img
+										className='card-img-top'
+										src={`${marvel.thumbnail.path}/portrait_xlarge.jpg`}
+										alt='Card image'
+									/>
+									<div className='card-body'>
+										<h5 className='card-title'>{marvel.name} </h5>
+										<p className='card-text'>{marvel.description}</p>
+									</div>
+									<ul className='list-group list-group-flush'>
+										<li className='list-group-item'>{marvel.name}</li>
+										<li className='list-group-item'>{marvel.name}</li>
+										<li className='list-group-item'>Data provided by Marvel. © 2014 Marvel</li>
+									</ul>
+									<div className='card-body'>
+										<a href='#' className='card-link'>
+											Card link
+										</a>
+										<a href='#' className='card-link'>
+											Another link
+										</a>
+									</div>
+								</div>
+							</div>
 						</div>
 					))}
-				<div>
-					<div className='card'>
-						<img className='card-img-top' src='...' alt='Card image' />
-						<div className='card-body'>
-							<h5 className='card-title'>Marvel Character</h5>
-							<p className='card-text'>
-								Some quick example text to build on the card title and make up
-								the bulk of the card's content.
-							</p>
-						</div>
-						<ul className='list-group list-group-flush'>
-							<li className='list-group-item'>Cras justo odio</li>
-							<li className='list-group-item'>Dapibus ac facilisis in</li>
-							<li className='list-group-item'>Vestibulum at eros</li>
-						</ul>
-						<div className='card-body'>
-							<a href='#' className='card-link'>
-								Card link
-							</a>
-							<a href='#' className='card-link'>
-								Another link
-							</a>
-						</div>
-					</div>
-				</div>
+				{/* <h3>{marvel.name}</h3>
+					<h3>{marvel.description}</h3> */}
 			</div>
 		);
 	};
