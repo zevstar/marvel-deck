@@ -107,8 +107,8 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 										<p className='card-text'>{marvel.description}</p>
 									</div>
 									<ul className='list-group list-group-flush'>
-										<li className='list-group-item'>{marvel.name}</li>
-										<li className='list-group-item'>{marvel.name}</li>
+										<li className='list-group-item'>Date modified: {marvel.modified}</li>
+										<li className='list-group-item'>{marvel.resourceURI}</li>
 										<li className='list-group-item'>Data provided by Marvel. © 2014 Marvel</li>
 									</ul>
 									<div className='card-body'>
