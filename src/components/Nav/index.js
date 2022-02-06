@@ -88,18 +88,18 @@ const Nav = () => {
 							<ul className='dropdown-menu' aria-labelledby='navbarDropdown'>
 								<li>
 									<Link className='dropdown-item' to='#'>
-										Action
+										Search by character
 									</Link>
 								</li>
 								<li>
 									<Link className='dropdown-item' to='#'>
-										Another action
+										Search by comic
 									</Link>
 								</li>
 								{/* <li><hr className="dropdown-divider"> </hr></li> */}
 								<li>
 									<Link className='dropdown-item' to='#'>
-										Something else here
+										Search by artist
 									</Link>
 								</li>
 							</ul>

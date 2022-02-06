@@ -35,7 +35,7 @@ const Login = ({ setUser }) => {
 					We will lie to you.
 				</div>
 			</div>
-			<div className='mb-3'>
+			{/* <div className='mb-3'>
 				<label htmlFor='exampleInputPassword1' className='form-label'>
 					Password
 				</label>
@@ -44,7 +44,7 @@ const Login = ({ setUser }) => {
 					className='form-control'
 					id='exampleInputPassword1'
 				/>
-			</div>
+			</div> */}
 
 			<button type='submit' className='btn btn-primary'>
 				Submit
