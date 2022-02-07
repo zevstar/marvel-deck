@@ -46,7 +46,7 @@ const MarvelList = ({ marvelList, itemsPerPage, addToFavorites }) => {
 					// counter++
 				// console.log(i);
 				marvelURLs.push(
-					`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}/${counter}`
+					`https://gateway.marvel.com/v1/public/characters?limit=100&ts=1&apikey=${apiKey}&hash=${hash}/${counter}`
 
 				)} else {
 
@@ -101,7 +101,7 @@ const MarvelList = ({ marvelList, itemsPerPage, addToFavorites }) => {
 
 	const Marvel = () => {
 		return (
-			<div id='marvel-container'>
+			<div id='marvel-container' class='container'>
 				{marvelList &&
 					marvelList.map(marvel => (
 						<div>
