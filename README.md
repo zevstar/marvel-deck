@@ -1,3 +1,5 @@
+https://alana-lipkin.netlify.app/
+
 Struggling with getting deployable version on Netlify.
 
 Goal: Create an app that will display info on Marvel characters using the Marvel api.
