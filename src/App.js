@@ -22,6 +22,7 @@ const App = () => {
 
 const [user, setUser] = useState('')
 const [marvelList, setMarvelList] = useState([])
+const [favorites, setFavorites] = useState([])
 
 const [characters, setCharacters] = useState([])
 	const apiKey = '338c499bfe7e07137ffb35480e17f40f'
@@ -66,6 +67,13 @@ useEffect(() =>{
 
 	console.log('marvelList', marvelList)
 
+	const addToFavorites = (marvel) => {
+		console.log('we added', marvel)
+	}
+
+
+
+
 	return (
 		<div className='App'>
 			{/* <UserContext.Provider value={user}> */}
@@ -75,7 +83,13 @@ useEffect(() =>{
 		<Routes>
           <Route path='login' element={<Login setUser={setUser} />} />
           <Route path='/' element ={<Home />} />
-          <Route path='marvel/list' element={<MarvelList marvelList={marvelList} itemsPerPage={100} />} />
+          <Route path='marvel/list' element={
+		  	<MarvelList
+				marvelList={marvelList}
+				itemsPerPage={8}
+				addToFavorites={addToFavorites}
+				/>
+				} />
         </Routes>
 			{/* </UserContext.Provider> */}
 

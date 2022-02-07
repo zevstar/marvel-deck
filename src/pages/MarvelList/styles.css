@@ -1,4 +1,14 @@
-.card {
+#marvel-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1 rem;
+
+}
+
+
+.marvel-card {
    width: 30rem;
    display: flex;
    justify-content: center;

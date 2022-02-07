@@ -9,7 +9,7 @@ import './styles.css';
 
 const imgURL = `http://i.annihil.us/u/prod/marvel/i/mg/3/40/4bb4680432f73`;
 
-const MarvelList = ({ marvelList, itemsPerPage }) => {
+const MarvelList = ({ marvelList, itemsPerPage, addToFavorites }) => {
 	// We start with an empty list of marvelList.
 	const [currentMarvel, setCurrentMarvel] = useState(null);
 	const [pageCount, setPageCount] = useState(0);
@@ -39,13 +39,22 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 
 			const marvelURLs = [];
 
+			let counter = 10000
+
 			for (let i = itemOffset; i < endOffset; i++) {
-				console.log(i);
+				if(i < 2498) {
+					// counter++
+				// console.log(i);
+				marvelURLs.push(
+					`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}/${counter}`
+
+				)} else {
+
 				marvelURLs.push(
 					`https://gateway.marvel.com/v1/public/characters?ts=1&apikey=${apiKey}&hash=${hash}/${i}`
-				);
+					)}
 			}
-
+			
 			console.log('urls', marvelURLs);
 
 			console.log(
@@ -59,7 +68,8 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 
 			// setCurrentMarvel(marvelList.slice(itemOffset, endOffset));
 			// if(currentMarvel) currPageMarvel()
-			setPageCount(Math.ceil(marvelList.length / itemsPerPage));
+			const length = marvelList.length ? marvelList.length : 2498
+			setPageCount(Math.ceil(length / itemsPerPage));
 		} catch (error) {
 			console.log(error);
 		}
@@ -78,10 +88,10 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 			axios.all(
 				marvelURLs.map(async (url) => {
 					const response = await axios.get(url);
-					console.log('response axios', response.data.data.results);
-					marvelArr.push(response.data);
-
-					console.log('Marvel Array', marvelArr);
+					// console.log('response axios', response.data.data.results);
+					marvelArr.push(response.data.data.results);
+					setCurrentMarvel(marvelArr.flat());
+					// console.log('Marvel Array', marvelArr);
 				})
 			);
 		} catch (error) {
@@ -91,25 +101,30 @@ const MarvelList = ({ marvelList, itemsPerPage }) => {
 
 	const Marvel = () => {
 		return (
-			<div>
+			<div id='marvel-container'>
 				{marvelList &&
-					marvelList.map((marvel) => (
+					marvelList.map(marvel => (
 						<div>
 							<div>
-								<div className='card'>
+								<div className='card marvel-card'key={marvel.id}>
 									<img
 										className='card-img-top'
-										src={`${marvel.thumbnail.path}/portrait_xlarge.jpg`}
+										src={`${marvel.thumbnail.path}/portrait_medium.jpg`}
 										alt='Card image'
 									/>
 									<div className='card-body'>
 										<h5 className='card-title'>{marvel.name} </h5>
 										<p className='card-text'>{marvel.description}</p>
+										<button className='btn btn-danger' onClick={() => addToFavorites(marvel)}>Like</button>
 									</div>
 									<ul className='list-group list-group-flush'>
-										<li className='list-group-item'>Date modified: {marvel.modified}</li>
+										<li className='list-group-item'>
+											Date modified: {marvel.modified}
+										</li>
 										<li className='list-group-item'>{marvel.resourceURI}</li>
-										<li className='list-group-item'>Data provided by Marvel. © 2014 Marvel</li>
+										<li className='list-group-item'>
+											Data provided by Marvel. © 2014 Marvel
+										</li>
 									</ul>
 									<div className='card-body'>
 										<a href='#' className='card-link'>
