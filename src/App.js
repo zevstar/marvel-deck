@@ -13,6 +13,7 @@ import UserContext from './contexts/UserContext.js';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import MarvelList from './pages/MarvelList';
+import Favorites from './pages/Favorites';
 //components
 import Nav from './components/Nav';
 
@@ -69,6 +70,7 @@ useEffect(() =>{
 
 	const addToFavorites = (marvel) => {
 		console.log('we added', marvel)
+		setFavorites([...favorites, marvel])
 	}
 
 
@@ -88,6 +90,11 @@ useEffect(() =>{
 				marvelList={marvelList}
 				itemsPerPage={8}
 				addToFavorites={addToFavorites}
+				/>
+				} />
+			<Route path='favorites'	elements={
+				<Favorites
+				favorites={favorites}
 				/>
 				} />
         </Routes>
