@@ -1,3 +1,5 @@
+Struggling with getting deployable version on Netlify.
+
 Goal: Create an app that will display info on Marvel characters using the Marvel api.
 Potential issues:
 --the api is a beta

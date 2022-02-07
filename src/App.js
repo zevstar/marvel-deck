@@ -78,7 +78,7 @@ useEffect(() =>{
 
 	return (
 		<div className='App'>
-			{/* <UserContext.Provider value={user}> */}
+			<UserContext.Provider value={user}>
 				<Nav />
 				{/* <MarvelList /> */}
 
@@ -92,13 +92,13 @@ useEffect(() =>{
 				addToFavorites={addToFavorites}
 				/>
 				} />
-			<Route path='favorites'	elements={
+			<Route path='favorites'	element={
 				<Favorites
 				favorites={favorites}
 				/>
 				} />
         </Routes>
-			{/* </UserContext.Provider> */}
+			</UserContext.Provider>
 
 			{/* <Login /> */}
 		</div>

@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 const Favorites = ({ favorites }) => {
+    console.log('favorites', favorites)
     return (
         <div id='marvel-container'>
         {favorites &&
